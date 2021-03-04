@@ -1,0 +1,149 @@
+/***** Body & Background ******/
+
+body {
+  background: url("/images/background.jpg") no-repeat center;
+	align-content:  center; 
+  background-size: cover;
+  position: center;
+	background-attachment: fixed;
+	background-position: 50% 50%;
+}
+
+
+#Intro{
+ color: white;
+ font-size: 25px;
+ padding-bottom: 10px;
+
+}
+
+#signOutBtn{
+  padding-top: 10px;
+  text-align: left;
+  
+}
+
+#displayLoginName{
+  align-content: left;
+  text-align: left;
+  color:blue;
+}
+
+#loggedAs{
+  align-content: left;
+  text-align: left;
+  color:blue;
+}
+
+#displayLoginLogo{
+  align-content: left;
+  text-align: left;
+  color:blue;
+}
+
+
+/***** Nav Bar ******/
+
+.nav_bar {
+  margin: 0 auto;
+  background-color:aliceblue;
+  opacity: 0.9;
+  width:60%;
+  border-radius:20px;
+}
+
+.nav_bar ul {
+  text-align: center;
+  color: black;
+  
+}
+
+.nav_bar ul li {
+  color:black;
+  font-size:20px;
+  display: inline-block;
+  text-align: center;
+  padding: 20px;
+
+}
+
+.nav_bar a:link {
+  color:black;
+}
+
+.nav_bar a:visited {
+  color:black;
+}
+
+.nav_bar a:hover {
+  color: yellow;
+}
+
+.nav_bar .current {
+  background-color: blue
+}
+
+/***** Header ******/ 
+
+/***** Footer ******/ 
+#page-container {
+  position: relative;
+  min-height: 100vh;
+}
+
+#content-wrap {
+  padding-bottom: 2.5rem;    /* Footer height */
+}
+
+#footer {
+  color: white;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 2.5rem;            /* Footer height */
+}
+
+/***** Search Bar ******/ 
+
+#searchBar{
+  text-align: center;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Style the search field */
+form.search_bar input[type=text] {
+  
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  float: center;
+  width: 25%;
+  background: #f1f1f1;
+}
+
+/* Style the submit button */
+form.search_bar button {
+  float: center;
+  width: 5%;
+  padding: 10px;
+  background: #2196F3;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none; /* Prevent double borders */
+  cursor: pointer;
+}
+
+form.search_bar button:hover {
+  background: #0b7dda;
+}
+
+/* Clear floats */
+form.search_bar::after {
+  content: "";
+  clear: both;
+  display: table;
+}
