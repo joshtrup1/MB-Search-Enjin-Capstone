@@ -26,9 +26,9 @@ app.get('/page2', async function(req, res) {
 });
 
 
-app.listen(3000, () => {
+app.listen(8000, () => {
   console.log('server started');
 });
 
 
-//Google API key: AIzaSyAhu_Juf2lfJuo6EdYxozRB_aQd9ojWzsY
+
