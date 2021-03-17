@@ -106,6 +106,7 @@
        */
       function listFiles() {
         gapi.client.drive.files.list({
+          q: "fullText Contains 'pdf'",
           'pageSize': 10,
           'fields': "nextPageToken, files(id, name)"
         }).then(function(response) {
@@ -114,12 +115,17 @@
           if (files && files.length > 0) {
             for (var i = 0; i < files.length; i++) {
               var file = files[i];
-              appendPre(file.name + ' (' + file.id + ')');
+              appendPre(file.name + ' (' + file.id + ')' + createUrl(file.id));
             }
           } else {
             appendPre('No files found.');
           }
         });
+      }
+
+      function createUrl(fileId) {
+        return "link: https://drive.google.com/uc?export=view&id="+fileId
+        // add page number ex: #page=10
       }
 
     </script>
