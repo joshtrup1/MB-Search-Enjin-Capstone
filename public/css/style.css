@@ -76,7 +76,7 @@ body {
 }
 
 .nav_bar a:hover {
-  color: yellow;
+  color:blue;
 }
 
 .nav_bar .current {
@@ -131,7 +131,7 @@ form.search_bar button {
   padding: 10px;
   background: #2196F3;
   color: white;
-  font-size: 17px;
+  font-size: 18px;
   border: 1px solid grey;
   border-left: none; /* Prevent double borders */
   cursor: pointer;
@@ -147,3 +147,23 @@ form.search_bar::after {
   clear: both;
   display: table;
 }
+
+/***** Page 2 ******/ 
+
+#p1{
+  text-align: center;
+  color: white;
+  font-size: 17px
+  }
+
+#content{
+text-align: center;
+color: white;
+font-size: 13px
+}
+
+#hyperLinks{
+  text-align: center;
+  color: white;
+  font-size: 13px
+  }
