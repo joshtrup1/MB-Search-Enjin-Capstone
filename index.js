@@ -4,6 +4,13 @@ const app = express();
 
 app.set("view engine","ejs");
 app.use(express.static("public"));
+app.use(express.json())
+app.use(
+  express.urlencoded({
+    extended: true
+  })
+)
+
 
 
 
@@ -23,6 +30,12 @@ app.get('/page1', async function(req, res) {
 app.get('/page2', async function(req, res) {
 
   res.render('page2' );
+});
+
+app.post('/page2', async function(req, res) {
+  var search_term = req.body.search;
+
+  res.render('page2', {search_term: search_term});
 });
 
 
