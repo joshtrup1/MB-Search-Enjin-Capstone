@@ -1,7 +1,7 @@
 {
-  "name": "package.json",
+  "name": "mb-search-enjin-capstone",
   "version": "1.0.0",
-  "description": "package.json file",
+  "description": "capstone project",
   "main": "index.js",
   "dependencies": {
     "ejs": "^3.1.6",
@@ -17,7 +17,7 @@
     "type": "git",
     "url": "git+https://github.com/joshtrup1/MB-Search-Enjin-Capstone.git"
   },
-  "author": "",
+  "author": "josh",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/joshtrup1/MB-Search-Enjin-Capstone/issues"

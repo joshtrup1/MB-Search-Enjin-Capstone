@@ -1,17 +1,43 @@
+<%- include ("partials/header.ejs") %>
+<%- include ("partials/navbar.ejs") %>
+
+
+
+
 <!DOCTYPE html>
 <html>
+
   <head>
-    <title>Drive API Quickstart</title>
+    <title>Results</title>
     <meta charset="utf-8" />
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
   </head>
+
+
   <body>
-    <p>Drive API Quickstart</p>
+
+    
+    <p1 id="p1"> Files We Found:  </p1>
 
     <!--Add buttons to initiate auth sequence and sign out-->
     <button id="authorize_button" style="display: none;">Authorize</button>
     <button id="signout_button" style="display: none;">Sign Out</button>
 
-    <pre id="content" style="white-space: pre-wrap;"></pre>
+
+    <!--File Results displayed here-->
+    
+    
+    <a id="content"> </a>
+    
+
+<!--          
+   <pre id="content" style="white-space: pre-wrap;"></pre>
+  <span id="contentLinks" style="white-space: pre-wrap;"></span>                        
+   -->
+
+    
+  
 
     <script type="text/javascript">
       // Client ID and API key from the Developer Console
@@ -88,6 +114,7 @@
       function handleSignoutClick(event) {
         gapi.auth2.getAuthInstance().signOut();
       }
+      
 
       /**
        * Append a pre element to the body containing the given message
@@ -99,6 +126,7 @@
         var pre = document.getElementById('content');
         var textContent = document.createTextNode(message + '\n');
         pre.appendChild(textContent);
+        
       }
 
       /**
@@ -110,12 +138,25 @@
           'pageSize': 10,
           'fields': "nextPageToken, files(id, name)"
         }).then(function(response) {
-          appendPre('Files:');
+          appendPre('');
           files = response.result.files;
           if (files && files.length > 0) {
             for (var i = 0; i < files.length; i++) {
               var file = files[i];
-              appendPre(file.name + ' (' + file.id + ')' + createUrl(file.id));
+              
+              var fileName = file.name;
+              //var fileNameID = file.name + ' (' + file.id + ')';
+              //var linkUrl = createUrl(file.name + ' (' + file.id + ')', file.id);
+
+              var linkUrl= createUrl(file.id);
+              var fullResult = fileName + linkUrl;
+              const pre = document.querySelector('#content');
+              pre.append(fileName);
+              pre.append(" Link: " );
+             
+              pre.append(linkUrl);
+              
+              
             }
           } else {
             appendPre('No files found.');
@@ -123,10 +164,54 @@
         });
       }
 
-      function createUrl(fileId) {
-        return "link: https://drive.google.com/uc?export=view&id="+fileId
-        // add page number ex: #page=10
-      }
+
+      function createUrl(id) {
+
+        //  need to add page number ex: #page=10
+        const aTag = document.createElement('a');
+        const url = `https://drive.google.com/uc?export=view&id=${id}`;
+
+        aTag.className = "contentLinks";
+        aTag.style = "white-space: pre-wrap;";
+        aTag.textContent = url;
+        aTag.href = url;
+
+      return aTag;
+
+
+}
+
+
+
+
+//       function createUrl(fileName, id) {
+//     const spanTag = document.createElement('span');
+//   const aTag = document.createElement('a');
+//   const url = `https://drive.google.com/uc?export=view&id=${id}`;
+  
+//   spanTag.textContent = `${fileName} Hyperlink: `
+
+//   aTag.className = "contentLinks";
+//   aTag.style = "white-space: pre-wrap;";
+//   aTag.textContent = url;
+//   aTag.href = url;
+  
+//   spanTag.append(aTag);
+
+//   return spanTag;
+// }
+
+
+//Original function from Yvonne
+// function createUrl(fileId) {
+      //   return "https://drive.google.com/uc?export=view&id="+fileId
+      //   // add page number ex: #page=10
+      // }
+
+
+
+
+      
 
     </script>
 
@@ -136,3 +221,6 @@
     </script>
   </body>
 </html>
+
+
+<%- include ("partials/footer.ejs") %>
