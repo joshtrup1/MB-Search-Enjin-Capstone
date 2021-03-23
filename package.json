@@ -1,12 +1,4 @@
 {
-<<<<<<< HEAD
-  "name": "mb-search-enjin-capstone",
-  "version": "1.0.0",
-  "description": "Monterey Bay Search Enjin Capstone Project",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-=======
   "name": "package.json",
   "version": "1.0.0",
   "description": "package.json file",
@@ -20,7 +12,6 @@
   "devDependencies": {},
   "scripts": {
     "test": "test"
->>>>>>> main
   },
   "repository": {
     "type": "git",
@@ -31,13 +22,5 @@
   "bugs": {
     "url": "https://github.com/joshtrup1/MB-Search-Enjin-Capstone/issues"
   },
-<<<<<<< HEAD
-  "homepage": "https://github.com/joshtrup1/MB-Search-Enjin-Capstone#readme",
-  "dependencies": {
-    "ejs": "^3.1.6",
-    "express": "^4.17.1"
-  }
-=======
   "homepage": "https://github.com/joshtrup1/MB-Search-Enjin-Capstone#readme"
->>>>>>> main
 }
