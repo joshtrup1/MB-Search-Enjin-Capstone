@@ -18,7 +18,7 @@
   <body>
 
     
-    <p1 id="p1"> Files We Found:  </p1>
+    <p1 id="p1" value=<%=search_term%>> Files We Found : "<%=search_term%>"</p1>
 
     <!--Add buttons to initiate auth sequence and sign out-->
     <button id="authorize_button" style="display: none;">Authorize</button>
@@ -133,8 +133,10 @@
        * Print files.
        */
       function listFiles() {
+        const t = document.getElementById('p1');
+        const terms = t.getAttribute('value');
         gapi.client.drive.files.list({
-          q: "fullText Contains 'pdf'",
+          q: "fullText Contains '"+terms+"'",
           'pageSize': 10,
           'fields': "nextPageToken, files(id, name)"
         }).then(function(response) {
@@ -169,7 +171,8 @@
 
         //  need to add page number ex: #page=10
         const aTag = document.createElement('a');
-        const url = `https://drive.google.com/uc?export=view&id=${id}`;
+        const url = `https://drive.google.com/file/d/${id}/view?usp=sharing`;
+        //const url = `https://drive.google.com/uc?export=view&id=${id}`;
 
         aTag.className = "contentLinks";
         aTag.style = "white-space: pre-wrap;";
