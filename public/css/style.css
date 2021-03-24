@@ -29,11 +29,6 @@ body {
   color:blue;
 }
 
-#loggedAs{
-  align-content: left;
-  text-align: left;
-  color:blue;
-}
 
 #displayLoginLogo{
   align-content: left;
@@ -148,7 +143,7 @@ form.search_bar::after {
   display: table;
 }
 
-/***** Page 2 ******/ 
+/***** Search Restults Page ******/ 
 
 #p1{
   text-align: center;

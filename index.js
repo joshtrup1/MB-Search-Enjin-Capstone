@@ -27,15 +27,15 @@ app.get('/page1', async function(req, res) {
 });
 
 //page 2 route
-app.get('/page2', async function(req, res) {
+app.get('/search_results', async function(req, res) {
 
-  res.render('page2' );
+  res.render('search_results' );
 });
 
-app.post('/page2', async function(req, res) {
+app.post('/search_results', async function(req, res) {
   var search_term = req.body.search;
 
-  res.render('page2', {search_term: search_term});
+  res.render('search_results', {search_term: search_term});
 });
 
 
