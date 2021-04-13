@@ -40,10 +40,13 @@ body {
 /***** Nav Bar ******/
 
 .nav_bar {
+  align-content: center;
   margin: 0 auto;
-  background-color:aliceblue;
-  opacity: 0.9;
-  width:60%;
+  /* below is same color as submit button if we want that instead */
+  /* background-color:rgb(33, 150, 243); */
+  background-color:rgb(115, 165, 230);
+  opacity: 0.85;
+  width:40%;
   border-radius:20px;
 }
 
@@ -132,6 +135,8 @@ form.search_bar button {
   cursor: pointer;
 }
 
+
+
 form.search_bar button:hover {
   background: #0b7dda;
 }
@@ -146,19 +151,31 @@ form.search_bar::after {
 /***** Search Restults Page ******/ 
 
 #p1{
-  text-align: center;
+  align-content: left !important;
+  text-align: left !important; 
   color: white;
   font-size: 17px
   }
 
 #content{
-text-align: center;
-color: white;
-font-size: 13px
+align-content: left !important;
+text-align: left !important; 
+color: black;
+font-size: 20px
 }
 
 #hyperLinks{
-  text-align: center;
+  align-content: left;
+  text-align: left;
   color: white;
-  font-size: 13px
+  font-size: 15px
   }
+
+  a[target=_blank] {
+    background-color: yellow;
+  }
+
+  /* .results_body{
+  align-content: left;
+  text-align: left;
+  } */
