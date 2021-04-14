@@ -38,6 +38,10 @@ app.post('/search_results', async function(req, res) {
   res.render('search_results', {search_term: search_term});
 });
 
+const parseRouter = require('./routes/parse');
+
+app.use('/parse', parseRouter);
+
 
 app.listen(8000, () => {
   console.log('server started');
