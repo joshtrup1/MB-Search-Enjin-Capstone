@@ -10,23 +10,28 @@ body {
 }
 
 
-#Intro{
- color: white;
- font-size: 25px;
- padding-bottom: 10px;
 
+
+.g-signin2{
+   padding-left: 10px;
 }
 
 #signOutBtn{
   padding-top: 10px;
+  padding-left: 35px;
   text-align: left;
   
 }
 
+#signout_Button{
+  padding-left: 10px;
+}
+
 #displayLoginName{
+  padding-left: 10px;
   align-content: left;
   text-align: left;
-  color:blue;
+  color:black;
 }
 
 
@@ -46,7 +51,7 @@ body {
   /* background-color:rgb(33, 150, 243); */
   background-color:rgb(115, 165, 230);
   opacity: 0.85;
-  width:40%;
+  width:20%;
   border-radius:20px;
 }
 
@@ -104,6 +109,7 @@ body {
 /***** Search Bar ******/ 
 
 #searchBar{
+  padding-bottom: 10px;
   text-align: center;
 }
 
@@ -113,7 +119,6 @@ body {
 
 /* Style the search field */
 form.search_bar input[type=text] {
-  
   padding: 10px;
   font-size: 17px;
   border: 1px solid grey;
@@ -151,15 +156,15 @@ form.search_bar::after {
 /***** Search Restults Page ******/ 
 
 #p1{
-  align-content: left !important;
-  text-align: left !important; 
+  align-content:center ;
+  text-align: center; 
   color: white;
   font-size: 17px
   }
 
 #content{
-align-content: left !important;
-text-align: left !important; 
+align-content: center;
+text-align: center; 
 color: black;
 font-size: 20px
 }
@@ -175,7 +180,4 @@ font-size: 20px
     background-color: yellow;
   }
 
-  /* .results_body{
-  align-content: left;
-  text-align: left;
-  } */
+ 

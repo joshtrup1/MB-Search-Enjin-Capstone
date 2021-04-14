@@ -28,26 +28,30 @@
         <button type="submit"><i class="fa fa-search"></i></button>
       </form> 
     </div>
+
+    <div id=displayLoginName></div>
+    <!-- <div id=displayLoginLogo></div> -->
   
     
-    <p1 style="text-align: center;" id="p1" value=<%=search_term%>> Files We Found Containing : "<%=search_term%>"</p1>
+    
  
     <!--Add buttons to initiate auth sequence and sign out-->
     <button id="authorize_button" style="display: none;">Authorize</button>
-    <button id="signout_button" style="display: none;">Sign Out</button>
- 
- 
+
+
+
+    <form action="/" method="GET">
+      <div id="signout_Button">
+        <button id="signout_button" style="display: none;">Sign Out</button>
+      </div>
+    
+    </form>
+    
+    
     <!--File Results displayed here-->
+    <p1 style="text-align: center;" id="p1" value=<%=search_term%>> </p1>
     
-  <a style="align-content:left !important; " id="content">  </a>
-   
- 
-  <A HREF="https://cglab.ca/~morin/teaching/2405/notes/javascript1.pdf#page=4"> TEST LINK OPENS TO PAGE 4</A>
- 
-    
-    
-    
-    
+    <a id="content">  </a> 
     
     <script type="text/javascript">
       // Client ID and API key from the Developer Console
@@ -123,6 +127,7 @@
        */
       function handleSignoutClick(event) {
         gapi.auth2.getAuthInstance().signOut();
+        //refresh();
       }
       
  
@@ -145,7 +150,7 @@
       function listFiles() {
         const t = document.getElementById('p1');
         const terms = t.getAttribute('value');
-        const searchInFileID = '1ZtGODBQ9XVYusZNiwMc9v1j9veKglTMY'
+        const searchInFileID = '1ZtGODBQ9XVYusZNiwMc9v1j9veKglTMY';
         gapi.client.drive.files.list({
           q: "fullText Contains '"+terms+"' and parents in '"+searchInFileID+"'",
           'pageSize': 10,
@@ -220,7 +225,13 @@ function changeBackground(color) {
    document.body.style.background = color;
 }
 
-window.addEventListener("load",function() { changeBackground('white') });
+function refresh() {    
+    setTimeout(function () {
+        location.reload()
+    }, 100);
+}
+
+window.addEventListener("load",function() { changeBackground('#D3D3D3') });
  
     </script>
  
