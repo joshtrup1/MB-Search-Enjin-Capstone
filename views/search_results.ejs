@@ -145,10 +145,11 @@
       function listFiles() {
         const t = document.getElementById('p1');
         const terms = t.getAttribute('value');
+        const searchInFileID = '1ZtGODBQ9XVYusZNiwMc9v1j9veKglTMY'
         gapi.client.drive.files.list({
-          q: "fullText Contains '"+terms+"'",
+          q: "fullText Contains '"+terms+"' and parents in '"+searchInFileID+"'",
           'pageSize': 10,
-          'fields': "nextPageToken, files(id, name, description)"
+          'fields': "nextPageToken, files(id, name, description, iconLink)" 
         }).then(function(response) {
           appendPre('');
           files = response.result.files;
@@ -157,17 +158,20 @@
               var file = files[i];
               var fileName = file.name;
               var fileDescription = file.description; 
+              var icon = file.iconLink;
               console.log("file name: " + fileName);
               
               //file description currently undefined, WHY?
+              // By default files do not have a description
               console.log("file description: " + fileDescription);
-              
+              console.log('file icon:'+icon);
+
+              var iconImg = createImg(icon);
               var linkUrl= createUrl(file.id, fileName);
               var fullResult = fileName + linkUrl;
               const pre = document.querySelector('#content');
               
-              
-              
+              pre.append(iconImg);
               pre.append(linkUrl);
               
               //pre.append("Description: " + file.description);
@@ -199,10 +203,17 @@
         aTag.href = url;
         aTag.append("\n\n");
         
-      return aTag;
+        return aTag;
+      }
+
+      function createImg(icon) {
  
- 
-}
+        const imgTag = document.createElement('img');
+        imgTag.style = "white-space: pre-wrap; width: 100; height: 100";
+        imgTag.src = icon;
+        
+        return imgTag;
+        }
  
 
 function changeBackground(color) {
