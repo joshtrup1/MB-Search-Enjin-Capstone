@@ -42,7 +42,7 @@
   <div class="g-signin2" data-onsuccess="onSignIn"></div>
   
  
-  <div id=displayLoginName></div>
+  <div id=displayLoginEmail></div>
   <!-- <div id=displayLoginLogo></div> -->
   
 <div id=signOutBtn >
@@ -78,7 +78,7 @@ function onSignIn(googleUser) {
   //var fullNameDisplayed =  firstNameLetter + lastNameLetter;
  
 
-  document.querySelector('#displayLoginName').innerHTML=displayLoggedinEmail;
+  document.querySelector('#displayLoginEmail').innerHTML=displayLoggedinEmail;
 
   // If I want to display Login Logo (not working yet) 
   //document.querySelector('#displayLoginLogo').innerHTML=displayLoginLogo;
