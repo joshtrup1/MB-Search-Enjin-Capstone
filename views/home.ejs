@@ -30,18 +30,6 @@
 
 <body>
 
-<div id=Intro> Welcome to our Search Enjin Project. See what you can find! </div>
-
-  <div class="g-signin2" data-onsuccess="onSignIn"></div>
-  
- 
-  <div id=displayLoginName></div>
-  <div id=displayLoginLogo></div>
-  
-<div id=signOutBtn >
-  <a style= "color:blue;" href="#" onclick="signOut();">Sign out</a>
-  </div>
-
   <div id=searchBar>
     <form class="search_bar" action="/search_results" method="POST">
       <label for="search"></label>
@@ -50,6 +38,18 @@
     </form> 
   </div>
 
+
+  <div class="g-signin2" data-onsuccess="onSignIn"></div>
+  
+ 
+  <div id=displayLoginEmail></div>
+  <!-- <div id=displayLoginLogo></div> -->
+  
+<div id=signOutBtn >
+  <a style= "color:blue;" href="#" onclick="signOut();">Sign out</a>
+  </div>
+
+  
   
 </body>
 
@@ -62,10 +62,10 @@
 // google sign-in function  
 function onSignIn(googleUser) {
   var profile = googleUser.getBasicProfile();
-  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-  console.log('Name: ' + profile.getName());
-  console.log('Image URL: ' + profile.getImageUrl());
-  console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+  // console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+  // console.log('Name: ' + profile.getName());
+  // console.log('Image URL: ' + profile.getImageUrl());
+  // console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
   
   var displayLoggedinName = googleUser.getBasicProfile().getName();
   var displayLoggedinEmail = googleUser.getBasicProfile().getEmail();
@@ -78,7 +78,7 @@ function onSignIn(googleUser) {
   //var fullNameDisplayed =  firstNameLetter + lastNameLetter;
  
 
-  document.querySelector('#displayLoginName').innerHTML=displayLoggedinEmail;
+  document.querySelector('#displayLoginEmail').innerHTML=displayLoggedinEmail;
 
   // If I want to display Login Logo (not working yet) 
   //document.querySelector('#displayLoginLogo').innerHTML=displayLoginLogo;

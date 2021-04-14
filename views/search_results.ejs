@@ -16,6 +16,7 @@
     <!--To style search bar and submit button-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+
   </head>
  
  
@@ -28,26 +29,28 @@
         <button type="submit"><i class="fa fa-search"></i></button>
       </form> 
     </div>
+    
+    <!-- <div id=displayLoginLogo></div> -->
   
     
-    <p1 style="text-align: center;" id="p1" value=<%=search_term%>> Files We Found Containing : "<%=search_term%>"</p1>
+    
  
     <!--Add buttons to initiate auth sequence and sign out-->
     <button id="authorize_button" style="display: none;">Authorize</button>
-    <button id="signout_button" style="display: none;">Sign Out</button>
- 
- 
+
+
+
+    <form action="/" method="GET">
+      <div id="signout_Button">
+        <button id="signout_button" style="display: none;">Sign Out</button>
+      </div>
+    </form>
+    
+    
     <!--File Results displayed here-->
+    <p1 style="text-align: center;" id="p1" value=<%=search_term%>> </p1>
     
-  <a style="align-content:left !important; " id="content">  </a>
-   
- 
-  <A HREF="https://cglab.ca/~morin/teaching/2405/notes/javascript1.pdf#page=4"> TEST LINK OPENS TO PAGE 4</A>
- 
-    
-    
-    
-    
+    <a id="content">  </a> 
     
     <script type="text/javascript">
       // Client ID and API key from the Developer Console
@@ -63,8 +66,10 @@
  
       var authorizeButton = document.getElementById('authorize_button');
       var signoutButton = document.getElementById('signout_button');
- 
+      
       var files;
+
+
  
       /**
        *  On load, called to load the auth2 library and API client library.
@@ -123,6 +128,7 @@
        */
       function handleSignoutClick(event) {
         gapi.auth2.getAuthInstance().signOut();
+        //refresh();
       }
       
  
@@ -145,26 +151,20 @@
       function listFiles() {
         const t = document.getElementById('p1');
         const terms = t.getAttribute('value');
-        const searchInFileID = '1ZtGODBQ9XVYusZNiwMc9v1j9veKglTMY'
+        const searchInFileID = '1ZtGODBQ9XVYusZNiwMc9v1j9veKglTMY';
         gapi.client.drive.files.list({
           q: "fullText Contains '"+terms+"' and parents in '"+searchInFileID+"'",
           'pageSize': 10,
-          'fields': "nextPageToken, files(id, name, description, iconLink)" 
+          'fields': "nextPageToken, files(id, name, iconLink)" 
         }).then(function(response) {
           appendPre('');
           files = response.result.files;
           if (files && files.length > 0) {
             for (var i = 0; i < files.length; i++) {
               var file = files[i];
-              var fileName = file.name;
-              var fileDescription = file.description; 
+              var fileName = file.name; 
               var icon = file.iconLink;
-              console.log("file name: " + fileName);
-              
-              //file description currently undefined, WHY?
-              // By default files do not have a description
-              console.log("file description: " + fileDescription);
-              console.log('file icon:'+icon);
+              console.log("file name: " +fileName);
 
               var iconImg = createImg(icon);
               var linkUrl= createUrl(file.id, fileName);
@@ -173,8 +173,6 @@
               
               pre.append(iconImg);
               pre.append(linkUrl);
-              
-              //pre.append("Description: " + file.description);
               
           
               
@@ -209,7 +207,7 @@
       function createImg(icon) {
  
         const imgTag = document.createElement('img');
-        imgTag.style = "white-space: pre-wrap; width: 100; height: 100";
+        imgTag.style = "white-space: pre-wrap; width: 100; height: 100; padding: 10px";
         imgTag.src = icon;
         
         return imgTag;
@@ -217,10 +215,16 @@
  
 
 function changeBackground(color) {
-   document.body.style.background = color;
+   document.body.style.backgroundImage = color;
 }
 
-window.addEventListener("load",function() { changeBackground('white') });
+function refresh() {    
+    setTimeout(function () {
+        location.reload()
+    }, 100);
+}
+
+window.addEventListener("load",function() { changeBackground("url('images/gray.jpg')") });
  
     </script>
  
