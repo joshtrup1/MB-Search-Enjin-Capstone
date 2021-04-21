@@ -38,11 +38,7 @@
         
     <% }) %>
 
-    <!-- <div style="text-align: center;">
-        <form action="/parse/start" method="GET">
-            <button class="btn btn-light" type="submit">Parse</button>
-        </form>
-    </div> -->
+    <button class="btn btn-light" id="checking">Check local</button>
 
     <script>
         $("a").click(function (){
@@ -54,6 +50,18 @@
                   contentType: "application/json",
                   data:"",
                   success: function (data) {
+                  },
+            });  
+        })    
+        
+        $("#checking").click(function (){
+            $.ajax({
+                  url: `/parse/check`,
+                  type: "GET",
+                  contentType: "application/json",
+                  data:"",
+                  success: function (data) {
+                    console.log(data)
                   },
             });  
         })         

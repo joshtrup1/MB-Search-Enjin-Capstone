@@ -3,13 +3,14 @@ const router = express.Router();
 const { createWorker } = require('tesseract.js');
 const fs = require('fs');
 var ffmpeg = require('ffmpeg');
+const { json } = require('express');
 const test = {}
 var dir = './temp/videos/'
 var dir2 = './temp/imgs/'
+// const TESSDATA_PREFIX= 'D:\\Tesseract\\tessdata'
 
-
+// main route 
 router.get('/', (req,res) => {
-
    fs.readdir(dir, (err, data) => {
        console.log(data)
        res.render('parse', {data: data});
@@ -17,14 +18,21 @@ router.get('/', (req,res) => {
     
 });
 
+//route to check if the json file was saving to the file system
+router.get('/check', (req,res) => {
+
+    fs.readdir('./public/js/', (err,files) =>{
+        let data = fs.readFileSync('./public/js/' + files)
+        let dd = JSON.parse(data)
+        console.log(dd)
+        res.send(dd)
+    })
+     
+});
+
 router.get('/:f', async (req,res) => {
     console.log(req.params.f)
 
-    // fs.readFile(`./temp/imgs/120.jpg` , (err,data) => {
-    //     // console.log(err, data)
-    //     if(err) return console.log("this is your error ", err)
-    // });
-    
 
     fs.readdir(dir2, (err, files) => {
         if (err) throw err;
@@ -44,19 +52,23 @@ router.get('/:f', async (req,res) => {
 
 });
 
+//function for parsing frames 
+//takes in 'a' for video file and 'b' for timestamp
 function extractFrames(a, b){
     try {
         var process = new ffmpeg(a);
+        
         ts = b
         process.then(function (video) {
             let temp = video.metadata.duration.seconds/b
+            // console.log(video)
             temp = Math.round(temp)
-            // console.log(temp)
+            // video.addCommand('-ss', '00:00:10')
             // Callback mode
             video.fnExtractFrameToJPG('./temp/imgs/', {
                 number : temp,
                 every_n_seconds: ts,
-                file_name : `ex`
+                file_name : ``
             }, function (error, files) {
                 if (!error)
                     console.log("Extracting Done");
@@ -71,27 +83,37 @@ function extractFrames(a, b){
 
 }
 
+//parse the image/images using tesseract ocr
 function parseImage(files){
     count = 1;
+    const worker = createWorker();
 
-    for (const file of files) {        
-        const worker = createWorker();
-        (async () => {
-            await worker.load();
-            await worker.loadLanguage('eng');
-            await worker.initialize('eng');
+    (async () => {
+        await worker.load();
+        await worker.loadLanguage('eng');
+        await worker.initialize('eng');
+        for (const file of files) {
             const { data: { text } } = await worker.recognize(dir2+file);
-            parseText(text, count*60)
-            await worker.terminate();
-        })();   
-        count++;
-        // if(count-1 == files.length){
-        //     console.log("PARSING DONE")
-        //     deleteFiles()
-        // }
-    }
+            let ss = file.replace(/[^0-9]/g, '')
+            
+            // console.log(text)
+            parseText(text, ss*60)
+            console.log(count)
+            count++
+
+            if(count == files.length){
+                console.log("parsing DONE")
+                console.log(test)
+                fs.writeFile("./public/js/temp.json", JSON.stringify(test), () =>{});
+                deleteFiles()
+            }
+        }
+        await worker.terminate();
+
+      })();
 }
 
+//delete files after the parsing is done 
 function deleteFiles(){
         fs.readdir(dir2, (err, files) => {
         if (err) throw err;
@@ -100,39 +122,35 @@ function deleteFiles(){
                     if (err) throw err;
                 });
             }
-            // fs.unlink('./eng.traineddata', err => {
-            //     if (err) throw err;
-            // });
-        
     });
-          
 }
 
+//parse the text from each image
 function parseText(text, ts){
     
     let raw = text
     raw = raw.replace(/\n/g, " ").toLowerCase()
     // raw = raw.replace(/\s\s+/g," ");
     raw = raw.replace(/[^0-9A-Za-z ]/g, "")
-    console.log(raw)
     let x = raw.split(" ")
     
     for(var i = 0; i<x.length; i++){
-        // if word exists in index then we increment occurences and push new page
-        if(test[x[i]]){
-            test[x[i]].occurences++
-            test[x[i]].timestamp.push(ts)
-        }
-        //if word doesn't exist in index
-        else{
-            let item = {occurences: 1, timestamp:[ts]}
-            test[x[i]] = item
-        }
-    }
-    
-  
-//    fs.writeFile("index.json", JSON.stringify(test), () =>{});
+        // if length of the word is 3 characters or less, don't include it
+        if(x[i].length > 3){
 
+            // if word exists in index then we increment occurences and push new page
+            if(test[x[i]]){
+                test[x[i]].occurences++
+                test[x[i]].timestamp.push(ts)
+            }
+            //if word doesn't exist in index
+            else{
+                let item = {occurences: 1, timestamp:[ts]}
+                test[x[i]] = item
+            }
+        }
+    
+    }
 }
 
 
