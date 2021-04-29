@@ -1,4 +1,9 @@
 <%- include ("partials/header.ejs") %>
+<body class="text-center">
+  <% classTitle = className.substr(0,3).toUpperCase()+" "+className.substr(3) %>
+  <h1 style="padding-bottom : 5px" class="etc"><%=classTitle%> Course Search </h1>     
+</body>
+
 <%- include ("partials/navbar.ejs") %>
  
  
@@ -19,16 +24,16 @@
 
   </head>
  
- 
+
   <body>
  
-    <div id=searchBar>
-      <form class="search_bar" action="/search_results" method="POST">
-        <label for="search"></label>
-        <input type="text" placeholder="Search.." id="search" name="search">
-        <button type="submit"><i class="fa fa-search"></i></button>
-      </form> 
-    </div>
+  <div id=searchBar>
+    <form class="search_bar" action="/<%=className%>" method="POST">
+      <label for="search"></label>
+      <input type="text" placeholder="Search.." id="search" name="search">
+      <button type="submit"><i class="fa fa-search"></i></button>
+    </form> 
+  </div>
     
     <!-- <div id=displayLoginLogo></div> -->
   
@@ -68,8 +73,6 @@
       var signoutButton = document.getElementById('signout_button');
       
       var files;
-
-
  
       /**
        *  On load, called to load the auth2 library and API client library.
@@ -165,7 +168,6 @@
               var fileName = file.name; 
               var icon = file.iconLink;
               console.log("file name: " +fileName);
-
               var iconImg = createImg(icon);
               var linkUrl= createUrl(file.id, fileName);
               var fullResult = fileName + linkUrl;
@@ -203,7 +205,6 @@
         
         return aTag;
       }
-
       function createImg(icon) {
  
         const imgTag = document.createElement('img');
@@ -213,17 +214,14 @@
         return imgTag;
         }
  
-
 function changeBackground(color) {
    document.body.style.backgroundImage = color;
 }
-
 function refresh() {    
     setTimeout(function () {
         location.reload()
     }, 100);
 }
-
 window.addEventListener("load",function() { changeBackground("url('images/gray.jpg')") });
  
     </script>
