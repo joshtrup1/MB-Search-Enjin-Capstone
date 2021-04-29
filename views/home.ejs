@@ -1,5 +1,12 @@
+
 <%- include ("partials/header.ejs") %>
 <%- include ("partials/navbar.ejs") %>
+
+
+<body style='background: url("/images/<%= info[3] %>") no-repeat center;' class="text-center">
+  <h1 style="padding-bottom : 5px" class="etc"><%= info[0] %> Course Search </h1>     
+</body>
+
 
 <html>
 <head>
@@ -25,13 +32,10 @@
 </head>
 
 
-
-
-
 <body>
-
+  
   <div id=searchBar>
-    <form class="search_bar" action="/search_results" method="POST">
+    <form class="search_bar" action="/<%=className%>" method="POST">
       <label for="search"></label>
       <input type="text" placeholder="Search.." id="search" name="search">
       <button type="submit"><i class="fa fa-search"></i></button>
@@ -49,8 +53,8 @@
   <a style= "color:blue;" href="#" onclick="signOut();">Sign out</a>
   </div>
 
-  
-  
+</body>
+<%- include ("partials/footer.ejs") %>
 </body>
 
 
@@ -58,7 +62,6 @@
 
 
 <script>
-
 // google sign-in function  
 function onSignIn(googleUser) {
   var profile = googleUser.getBasicProfile();
@@ -70,23 +73,17 @@ function onSignIn(googleUser) {
   var displayLoggedinName = googleUser.getBasicProfile().getName();
   var displayLoggedinEmail = googleUser.getBasicProfile().getEmail();
   var displayLoginLogo = googleUser.getBasicProfile().getImageUrl();
-
   // If I want to display the name instead of email
   //var firstNameLetter = displayLoggedinName.charAt(0).toUpperCase();
   //var lastNameLetter = displayLoggedinName.charAt(5).toUpperCase();
   //var firstSlice = displayLoggedinName.splice
   //var fullNameDisplayed =  firstNameLetter + lastNameLetter;
  
-
   document.querySelector('#displayLoginEmail').innerHTML=displayLoggedinEmail;
-
   // If I want to display Login Logo (not working yet) 
   //document.querySelector('#displayLoginLogo').innerHTML=displayLoginLogo;
   
 }
-
-
-
   // google sign-out function
   function signOut() {
     var auth2 = gapi.auth2.getAuthInstance();
@@ -95,16 +92,13 @@ function onSignIn(googleUser) {
     });
     window.location.reload();
   }
-
-
-
 </script>
 
 
 
 </html>
 
-<%- include ("partials/footer.ejs") %>
+
 
 
 
