@@ -1,9 +1,4 @@
 <%- include ("partials/header.ejs") %>
-<body class="text-center">
-  <% classTitle = className.substr(0,3).toUpperCase()+" "+className.substr(3) %>
-  <h1 style="padding-bottom : 5px" class="etc"><%=classTitle%> Course Search </h1>     
-</body>
-
 <%- include ("partials/navbar.ejs") %>
  
  
@@ -17,43 +12,47 @@
     <meta charset="utf-8" />
  
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-
+ 
     <!--To style search bar and submit button-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-
+ 
+ 
   </head>
  
-
+ 
   <body>
  
-  <div id=searchBar>
-    <form class="search_bar" action="/<%=className%>" method="POST">
-      <label for="search"></label>
-      <input type="text" placeholder="Search.." id="search" name="search">
-      <button type="submit"><i class="fa fa-search"></i></button>
-    </form> 
-  </div>
+    <div id=searchBar>
+      <form class="search_bar" action="/search_results" method="POST">
+        <label for="search"></label>
+        <input type="text" placeholder="Search.." id="search" name="search">
+        <button type="submit"><i class="fa fa-search"></i></button>
+      </form> 
+    </div>
     
-    <!-- <div id=displayLoginLogo></div> -->
+    <div id=displayLoginEmail></div>
+    
   
     
     
  
     <!--Add buttons to initiate auth sequence and sign out-->
-    <button id="authorize_button" style="display: none;">Authorize</button>
-
-
-
-    <form action="/" method="GET">
+    <button id="authorize_button" style="display: none;">Sign in</button>
+ 
+ 
+    <div id="signout_Button">
+        <button id="signout_button" style="display: none;">Sign Out</button>
+      </div>
+ 
+    <!-- <form action="/" method="GET">
       <div id="signout_Button">
         <button id="signout_button" style="display: none;">Sign Out</button>
       </div>
-    </form>
+    </form> -->
     
     
     <!--File Results displayed here-->
-    <p1 style="text-align: center;" id="p1" value=<%=search_term%>> </p1>
+    <!-- <p1 style="text-align: center;" id="p1" value=%=search_term%>> </p1> -->
     
     <a id="content">  </a> 
     
@@ -73,6 +72,8 @@
       var signoutButton = document.getElementById('signout_button');
       
       var files;
+ 
+ 
  
       /**
        *  On load, called to load the auth2 library and API client library.
@@ -131,7 +132,7 @@
        */
       function handleSignoutClick(event) {
         gapi.auth2.getAuthInstance().signOut();
-        //refresh();
+        refresh();
       }
       
  
@@ -168,6 +169,7 @@
               var fileName = file.name; 
               var icon = file.iconLink;
               console.log("file name: " +fileName);
+ 
               var iconImg = createImg(icon);
               var linkUrl= createUrl(file.id, fileName);
               var fullResult = fileName + linkUrl;
@@ -205,6 +207,7 @@
         
         return aTag;
       }
+ 
       function createImg(icon) {
  
         const imgTag = document.createElement('img');
@@ -214,15 +217,20 @@
         return imgTag;
         }
  
+ 
 function changeBackground(color) {
    document.body.style.backgroundImage = color;
 }
+window.addEventListener("load",function() { changeBackground("url('images/gray.jpg')") });
+ 
+ 
 function refresh() {    
     setTimeout(function () {
         location.reload()
     }, 100);
 }
-window.addEventListener("load",function() { changeBackground("url('images/gray.jpg')") });
+ 
+ 
  
     </script>
  
@@ -235,3 +243,4 @@ window.addEventListener("load",function() { changeBackground("url('images/gray.j
  
  
 <%- include ("partials/footer.ejs") %>
+
