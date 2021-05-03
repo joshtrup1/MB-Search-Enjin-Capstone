@@ -3,6 +3,10 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=webstorm,node
 
 ### Node ###
+
+#
+temp/videos/
+
 # Logs
 logs
 *.log
