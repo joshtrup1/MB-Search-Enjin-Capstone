@@ -62,11 +62,12 @@ function classType(className) {
 
 };
 
-/*
+
 app.listen(8000, () => {
   console.log('server started');
 });
-**/ 
+
+/*
 app.listen(process.env.PORT, process.env.IP , function()
 {
    var loopNum = 4; 
@@ -79,3 +80,4 @@ app.listen(process.env.PORT, process.env.IP , function()
     console.log("Welcome , currently retreiving IP ::::");
     console.log("Express Server is now Running...");
 });
+**/
