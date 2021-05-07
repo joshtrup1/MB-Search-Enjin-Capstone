@@ -1,6 +1,9 @@
 const express = require('express');
 const app = express();
-
+const fs = require('fs');
+const path = require('path');
+var completedList = fs.readFileSync('./completed_videos.json');
+var completed = JSON.parse(completedList);
 
 app.set("view engine","ejs");
 app.use(express.static("public"));
@@ -14,7 +17,7 @@ app.use(
 // script for parsing video
 var video_script = require('./videoScript')
 var cron = require('node-cron');
-// video_script.start()
+video_script.start();
 cron.schedule('0 0 2 * * *', () =>{
     // video_script.start()
     console.log('running at 2am')
@@ -26,26 +29,36 @@ cron.schedule('0 0 2 * * *', () =>{
 app.get('/:className', async function(req, res) {
   const className = req.params.className;
   const info = classType(className);
-  res.render('home', {className: className, info: info});
+  res.render('home', {className: className, info: info, title:"Results"});
 });
 
 app.post('/:className', async function(req, res) {
   const className = req.params.className;
   var search_term = req.body.search;
-
-  res.render('search_results', {classInfo: Info});
+  const info = classType(className);
+  res.render('search_results', {classInfo: info, title: "Results", className:className, search_term: search_term, info: info});
 });
 
 //page 1 route
-app.get('/page1', async function(req, res) {
+// app.get('/page1', async function(req, res) {
 
-  res.render('page1' );
-});
+//   res.render('page1', {title: "Page one"});
+// });
 
 //page 2 route
 app.get('/search_results', async function(req, res) {
 
-  res.render('search_results' );
+  res.render('search_results', {title: "Results"});
+});
+
+app.get('/video/:fileName', async function(req, res) {
+  // console.log(req.params.fileName)
+  if(completed[req.params.fileName]){
+    let tempName = path.parse(req.params.fileName).name;
+    var jsonToSend = fs.readFileSync(`./public/js/${tempName}.json`);
+    var result = JSON.parse(jsonToSend);
+    res.send(result)
+  }
 });
 
 app.post('/search_results', async function(req, res) {

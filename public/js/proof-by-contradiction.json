@@ -1,0 +1,640 @@
+{
+    "prove": {
+        "occurences": 7,
+        "timestamp": [
+            120,
+            120,
+            180,
+            180,
+            180,
+            180,
+            180
+        ],
+        "fileName": "proof-by-contradiction"
+    },
+    "this": {
+        "occurences": 5,
+        "timestamp": [
+            120,
+            180,
+            420,
+            420,
+            420
+        ],
+        "fileName": "proof-by-contradiction"
+    },
+    "argument": {
+        "occurences": 5,
+        "timestamp": [
+            120,
+            180,
+            420,
+            480,
+            540
+        ],
+        "fileName": "proof-by-contradiction"
+    },
+    "paqq": {
+        "occurences": 5,
+        "timestamp": [
+            120,
+            180,
+            600,
+            660,
+            720
+        ],
+        "fileName": "proof-by-contradiction"
+    },
+    "valid": {
+        "occurences": 2,
+        "timestamp": [
+            120,
+            180
+        ],
+        "fileName": "proof-by-contradiction"
+    },
+    "think": {
+        "occurences": 5,
+        "timestamp": [
+            120,
+            180,
+            180,
+            360,
+            360
+        ],
+        "fileName": "proof-by-contradiction"
+    },
+    "cant": {
+        "occurences": 2,
+        "timestamp": [
+            180,
+            180
+        ],
+        "fileName": "proof-by-contradiction"
+    },
+    "warm": {
+        "occurences": 2,
+        "timestamp": [
+            240,
+            300
+        ],
+        "fileName": "proof-by-contradiction"
+    },
+    "puzzle": {
+        "occurences": 2,
+        "timestamp": [
+            240,
+            300
+        ],
+        "fileName": "proof-by-contradiction"
+    },
+    "have": {
+        "occurences": 3,
+        "timestamp": [
+            240,
+            300,
+            540
+        ],
+        "fileName": "proof-by-contradiction"
+    },
+    "piles": {
+        "occurences": 4,
+        "timestamp": [
+            240,
+            240,
+            300,
+            300
+        ],
+        "fileName": "proof-by-contradiction"
+    },
+    "pennies": {
+        "occurences": 4,
+        "timestamp": [
+            240,
+            240,
+            300,
+            300
+        ],
+        "fileName": "proof-by-contradiction"
+    },
+    "question": {
+        "occurences": 2,
+        "timestamp": [
+            240,
+            300
+        ],
+        "fileName": "proof-by-contradiction"
+    },
+    "check": {
+        "occurences": 2,
+        "timestamp": [
+            240,
+            300
+        ],
+        "fileName": "proof-by-contradiction"
+    },
+    "contain": {
+        "occurences": 2,
+        "timestamp": [
+            240,
+            300
+        ],
+        "fileName": "proof-by-contradiction"
+    },
+    "exactly": {
+        "occurences": 2,
+        "timestamp": [
+            240,
+            300
+        ],
+        "fileName": "proof-by-contradiction"
+    },
+    "same": {
+        "occurences": 4,
+        "timestamp": [
+            240,
+            300,
+            540,
+            540
+        ],
+        "fileName": "proof-by-contradiction"
+    },
+    "number": {
+        "occurences": 4,
+        "timestamp": [
+            240,
+            240,
+            300,
+            300
+        ],
+        "fileName": "proof-by-contradiction"
+    },
+    "without": {
+        "occurences": 2,
+        "timestamp": [
+            240,
+            300
+        ],
+        "fileName": "proof-by-contradiction"
+    },
+    "counting": {
+        "occurences": 2,
+        "timestamp": [
+            240,
+            300
+        ],
+        "fileName": "proof-by-contradiction"
+    },
+    "each": {
+        "occurences": 2,
+        "timestamp": [
+            240,
+            300
+        ],
+        "fileName": "proof-by-contradiction"
+    },
+    "pile": {
+        "occurences": 2,
+        "timestamp": [
+            240,
+            300
+        ],
+        "fileName": "proof-by-contradiction"
+    },
+    "actual": {
+        "occurences": 7,
+        "timestamp": [
+            360,
+            360,
+            420,
+            420,
+            420,
+            540,
+            540
+        ],
+        "fileName": "proof-by-contradiction"
+    },
+    "infinities": {
+        "occurences": 4,
+        "timestamp": [
+            360,
+            360,
+            420,
+            540
+        ],
+        "fileName": "proof-by-contradiction"
+    },
+    "exist": {
+        "occurences": 3,
+        "timestamp": [
+            360,
+            360,
+            420
+        ],
+        "fileName": "proof-by-contradiction"
+    },
+    "about": {
+        "occurences": 1,
+        "timestamp": [
+            360
+        ],
+        "fileName": "proof-by-contradiction"
+    },
+    "concept": {
+        "occurences": 1,
+        "timestamp": [
+            360
+        ],
+        "fileName": "proof-by-contradiction"
+    },
+    "limitless": {
+        "occurences": 1,
+        "timestamp": [
+            360
+        ],
+        "fileName": "proof-by-contradiction"
+    },
+    "amount": {
+        "occurences": 1,
+        "timestamp": [
+            360
+        ],
+        "fileName": "proof-by-contradiction"
+    },
+    "galileos": {
+        "occurences": 3,
+        "timestamp": [
+            420,
+            480,
+            540
+        ],
+        "fileName": "proof-by-contradiction"
+    },
+    "part": {
+        "occurences": 3,
+        "timestamp": [
+            420,
+            480,
+            540
+        ],
+        "fileName": "proof-by-contradiction"
+    },
+    "assume": {
+        "occurences": 4,
+        "timestamp": [
+            420,
+            420,
+            420,
+            660
+        ],
+        "fileName": "proof-by-contradiction"
+    },
+    "that": {
+        "occurences": 4,
+        "timestamp": [
+            420,
+            420,
+            480,
+            540
+        ],
+        "fileName": "proof-by-contradiction"
+    },
+    "there": {
+        "occurences": 2,
+        "timestamp": [
+            420,
+            480
+        ],
+        "fileName": "proof-by-contradiction"
+    },
+    "infinity": {
+        "occurences": 2,
+        "timestamp": [
+            420,
+            420
+        ],
+        "fileName": "proof-by-contradiction"
+    },
+    "natural": {
+        "occurences": 2,
+        "timestamp": [
+            420,
+            480
+        ],
+        "fileName": "proof-by-contradiction"
+    },
+    "numbers": {
+        "occurences": 2,
+        "timestamp": [
+            420,
+            480
+        ],
+        "fileName": "proof-by-contradiction"
+    },
+    "like": {
+        "occurences": 1,
+        "timestamp": [
+            420
+        ],
+        "fileName": "proof-by-contradiction"
+    },
+    "infinite": {
+        "occurences": 1,
+        "timestamp": [
+            420
+        ],
+        "fileName": "proof-by-contradiction"
+    },
+    "sense": {
+        "occurences": 1,
+        "timestamp": [
+            420
+        ],
+        "fileName": "proof-by-contradiction"
+    },
+    "having": {
+        "occurences": 1,
+        "timestamp": [
+            420
+        ],
+        "fileName": "proof-by-contradiction"
+    },
+    "infinitely": {
+        "occurences": 1,
+        "timestamp": [
+            420
+        ],
+        "fileName": "proof-by-contradiction"
+    },
+    "many": {
+        "occurences": 2,
+        "timestamp": [
+            420,
+            480
+        ],
+        "fileName": "proof-by-contradiction"
+    },
+    "elements": {
+        "occurences": 1,
+        "timestamp": [
+            420
+        ],
+        "fileName": "proof-by-contradiction"
+    },
+    "also": {
+        "occurences": 3,
+        "timestamp": [
+            420,
+            660,
+            720
+        ],
+        "fileName": "proof-by-contradiction"
+    },
+    "exists": {
+        "occurences": 2,
+        "timestamp": [
+            420,
+            540
+        ],
+        "fileName": "proof-by-contradiction"
+    },
+    "dont": {
+        "occurences": 1,
+        "timestamp": [
+            480
+        ],
+        "fileName": "proof-by-contradiction"
+    },
+    "belong": {
+        "occurences": 1,
+        "timestamp": [
+            480
+        ],
+        "fileName": "proof-by-contradiction"
+    },
+    "second": {
+        "occurences": 1,
+        "timestamp": [
+            480
+        ],
+        "fileName": "proof-by-contradiction"
+    },
+    "final": {
+        "occurences": 1,
+        "timestamp": [
+            540
+        ],
+        "fileName": "proof-by-contradiction"
+    },
+    "weve": {
+        "occurences": 1,
+        "timestamp": [
+            540
+        ],
+        "fileName": "proof-by-contradiction"
+    },
+    "just": {
+        "occurences": 1,
+        "timestamp": [
+            540
+        ],
+        "fileName": "proof-by-contradiction"
+    },
+    "shown": {
+        "occurences": 1,
+        "timestamp": [
+            540
+        ],
+        "fileName": "proof-by-contradiction"
+    },
+    "assumption": {
+        "occurences": 1,
+        "timestamp": [
+            540
+        ],
+        "fileName": "proof-by-contradiction"
+    },
+    "sets": {
+        "occurences": 2,
+        "timestamp": [
+            540,
+            540
+        ],
+        "fileName": "proof-by-contradiction"
+    },
+    "size": {
+        "occurences": 2,
+        "timestamp": [
+            540,
+            540
+        ],
+        "fileName": "proof-by-contradiction"
+    },
+    "pairing": {
+        "occurences": 1,
+        "timestamp": [
+            540
+        ],
+        "fileName": "proof-by-contradiction"
+    },
+    "arent": {
+        "occurences": 1,
+        "timestamp": [
+            540
+        ],
+        "fileName": "proof-by-contradiction"
+    },
+    "therefore": {
+        "occurences": 1,
+        "timestamp": [
+            540
+        ],
+        "fileName": "proof-by-contradiction"
+    },
+    "infinites": {
+        "occurences": 1,
+        "timestamp": [
+            540
+        ],
+        "fileName": "proof-by-contradiction"
+    },
+    "some": {
+        "occurences": 1,
+        "timestamp": [
+            540
+        ],
+        "fileName": "proof-by-contradiction"
+    },
+    "values": {
+        "occurences": 1,
+        "timestamp": [
+            540
+        ],
+        "fileName": "proof-by-contradiction"
+    },
+    "other": {
+        "occurences": 1,
+        "timestamp": [
+            540
+        ],
+        "fileName": "proof-by-contradiction"
+    },
+    "reached": {
+        "occurences": 3,
+        "timestamp": [
+            540,
+            660,
+            720
+        ],
+        "fileName": "proof-by-contradiction"
+    },
+    "contradiction": {
+        "occurences": 3,
+        "timestamp": [
+            540,
+            660,
+            720
+        ],
+        "fileName": "proof-by-contradiction"
+    },
+    "reductio": {
+        "occurences": 7,
+        "timestamp": [
+            600,
+            660,
+            720,
+            780,
+            780,
+            840,
+            840
+        ],
+        "fileName": "proof-by-contradiction"
+    },
+    "absurdum": {
+        "occurences": 7,
+        "timestamp": [
+            600,
+            660,
+            720,
+            780,
+            780,
+            840,
+            840
+        ],
+        "fileName": "proof-by-contradiction"
+    },
+    "idea": {
+        "occurences": 3,
+        "timestamp": [
+            600,
+            660,
+            720
+        ],
+        "fileName": "proof-by-contradiction"
+    },
+    "then": {
+        "occurences": 4,
+        "timestamp": [
+            660,
+            660,
+            720,
+            720
+        ],
+        "fileName": "proof-by-contradiction"
+    },
+    "double": {
+        "occurences": 2,
+        "timestamp": [
+            660,
+            720
+        ],
+        "fileName": "proof-by-contradiction"
+    },
+    "negation": {
+        "occurences": 2,
+        "timestamp": [
+            660,
+            720
+        ],
+        "fileName": "proof-by-contradiction"
+    },
+    "adjunction": {
+        "occurences": 2,
+        "timestamp": [
+            660,
+            720
+        ],
+        "fileName": "proof-by-contradiction"
+    },
+    "know": {
+        "occurences": 2,
+        "timestamp": [
+            660,
+            720
+        ],
+        "fileName": "proof-by-contradiction"
+    },
+    "assumep": {
+        "occurences": 1,
+        "timestamp": [
+            720
+        ],
+        "fileName": "proof-by-contradiction"
+    },
+    "proof": {
+        "occurences": 2,
+        "timestamp": [
+            780,
+            840
+        ],
+        "fileName": "proof-by-contradiction"
+    },
+    "rule": {
+        "occurences": 2,
+        "timestamp": [
+            780,
+            840
+        ],
+        "fileName": "proof-by-contradiction"
+    }
+}

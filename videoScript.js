@@ -13,6 +13,7 @@ var b = false;
 module.exports = {
 
     start:function startScript(){
+        deleteFiles();
         fs.readdir(dir, (err, data) => {
 
             // console.log(completed)
@@ -35,6 +36,9 @@ module.exports = {
                 console.log('No videos to parse')
             }
         })
+    },
+    end:function endScript(){
+        deleteFiles();
     }
 }
 
@@ -96,7 +100,13 @@ function parseImage(files, fileName, temp){
             if(i === temp){
                 // console.log(fileName)
                 // console.log(tempIndex)
+                console.log("Parsing done")
                 fs.writeFile(`./public/js/${fileName}.json`, JSON.stringify(tempIndex), () =>{});
+                
+                let c = {date_parsed: new Date()}
+                
+                completed[`${fileName}.mp4`] = c;
+                fs.writeFile(`./completed_videos.json`, JSON.stringify(completed), () =>{});
             }
         }
         // for (const file of files) {

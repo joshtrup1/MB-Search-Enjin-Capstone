@@ -1,3 +1,30 @@
-<nav class="nav_bar">
-  <a href="/page1">Admin</a>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="/">CS</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link active" href="/">Home<span class="sr-only">(current)</span></a>
+      <!-- <a class="nav-item nav-link" href="#">Browse</a>
+      <a class="nav-item nav-link" href="#">Misc</a> -->
+      
+    </div>
+  </div>
+  <div id=displayLoginEmail></div>
+  <div class="g-signin2" data-onsuccess="onSignIn"></div>
+  <!-- <div id=signOutBtn >
+    <a style= "color:blue;" href="#" onclick="signOut();">Sign out</a>
+  </div> -->
+
+  <button id="authorize_button" style="display: none;" class="btn btn-dark">Authorize</button>
+
+<form action="/" method="GET">
+  <div id="signout_Button">
+    <button id="signout_button" style="display: none;" class="btn btn-dark">Sign Out</button>
+  </div>
+</form>
 </nav>
+
+
+
