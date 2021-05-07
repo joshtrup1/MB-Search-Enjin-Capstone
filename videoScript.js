@@ -4,21 +4,34 @@ const fs = require('fs');
 var ffmpeg = require('ffmpeg');
 const { json } = require('express');
 
-var dir = './temp/videos/'
-var dir2 = './temp/imgs/'
+var dir = './temp/videos/';
+var dir2 = './temp/imgs/';
 const path = require('path');
+var completedList = fs.readFileSync('./completed_videos.json');
+var completed = JSON.parse(completedList);
+var b = false;
 module.exports = {
 
     start:function startScript(){
         fs.readdir(dir, (err, data) => {
 
+            // console.log(completed)
+            console.log("Checking for videos...")
             if(data.length > 0){
                 for (item in data){
-                    // console.log(data[item])
-                    extractFrames(dir+data[item], 60, data[item])
+                    // let checkName = path.parse(data[item]).name;
+                    // if the video hasn't been indexed then we start the index
+                    if(!completed[data[item]]){
+                        b = true;
+                        extractFrames(dir+data[item], 60, data[item])
+                    }
+                }
+                // if no videos were found to parse, we tell the server
+                if(!b){
+                    console.log('No videos to parse')
                 }
             }
-            else if(data.length === 0){
+            else if(data.length == 0){
                 console.log('No videos to parse')
             }
         })
@@ -28,7 +41,7 @@ module.exports = {
 
 
 //function for parsing frames 
-//takes in 'a' for video file and 'b' for timestamp
+//takes in 'a' for video file path and 'b' for timestamp, 'c' is for name of the file
 function extractFrames(a, b, c){
     // console.log(a)
     try {
@@ -81,8 +94,8 @@ function parseImage(files, fileName, temp){
             count++
 
             if(i === temp){
-                console.log(fileName)
-                console.log(tempIndex)
+                // console.log(fileName)
+                // console.log(tempIndex)
                 fs.writeFile(`./public/js/${fileName}.json`, JSON.stringify(tempIndex), () =>{});
             }
         }
