@@ -1,8 +1,9 @@
 {
   "name": "mb-search-enjin-capstone",
   "version": "1.0.0",
-  "description": "capstone project",
+  "description": "",
   "main": "index.js",
+<<<<<<< HEAD
   "dependencies": {
     "ejs": "^3.1.6",
     "express": "^4.17.1",
@@ -13,17 +14,27 @@
     "tesseract.js": "^2.1.4"
   },
   "devDependencies": {},
+=======
+>>>>>>> f22614aafd8d7d5ad47a41eb5925719554113ed3
   "scripts": {
-    "test": "test"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/joshtrup1/MB-Search-Enjin-Capstone.git"
   },
-  "author": "josh",
+  "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/joshtrup1/MB-Search-Enjin-Capstone/issues"
   },
-  "homepage": "https://github.com/joshtrup1/MB-Search-Enjin-Capstone#readme"
+  "homepage": "https://github.com/joshtrup1/MB-Search-Enjin-Capstone#readme",
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "googleapis": "^73.0.0",
+    "node": "^16.1.0",
+    "nodemon": "^2.0.7"
+  }
 }
