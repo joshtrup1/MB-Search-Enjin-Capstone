@@ -17,11 +17,41 @@ app.use(
 // script for parsing video
 var video_script = require('./videoScript')
 var cron = require('node-cron');
-video_script.start();
+// video_script.start();
 cron.schedule('0 0 2 * * *', () =>{
-    // video_script.start()
+    video_script.start()
     console.log('running at 2am')
 })
+
+function videoSearch(search_term){
+  let videos = ['proof-by-contradiction', 'implication']
+  let terms = search_term.split(" ")
+  let count = [];
+  // console.log(terms)
+  for(v in videos){
+    vid = videos[v]
+    // console.log(vid)
+    if(completed[`${vid}.mp4`]){
+      let currentJSON = fs.readFileSync(`./public/js/${vid}.json`);
+      let current = JSON.parse(currentJSON)
+      
+      for(t in terms){
+        let term = terms[t]
+        // console.log(term)
+        if(current[term] && count[v]){
+          // count[vid].occurences += current[term].occurences
+          count[v].occurences += current[term].occurences
+        }
+        else if(current[term]){
+          // count[vid] = {occurences: current[term].occurences}
+          count[v] = {video:vid, occurences: current[term].occurences}
+        }
+      }
+    }  
+  }
+  count.sort((a,b) =>(a.occurences > b.occurences) ? 1: -1)
+  return count
+}
 
 
 
@@ -36,7 +66,11 @@ app.post('/:className', async function(req, res) {
   const className = req.params.className;
   var search_term = req.body.search;
   const info = classType(className);
-  res.render('home', {search_term: search_term, className: className, info: info});
+
+  let result = videoSearch(search_term)
+  let temp = fs.readFileSync(`./public/js/${result[result.length-1].video}.json`);
+  let jsonResult = JSON.parse(temp)
+  res.render('home', {search_term: search_term, className: className, info: info, videoResults:jsonResult});
 });
 
 //admin route
