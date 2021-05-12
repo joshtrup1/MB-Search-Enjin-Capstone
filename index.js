@@ -18,33 +18,22 @@ app.use(
 app.get('/:className', async function(req, res) {
   const className = req.params.className;
   const info = classType(className);
-  res.render('home', {className: className, info: info});
+  res.render('home', {className: className, info: info, search_term: undefined});
 });
 
 app.post('/:className', async function(req, res) {
   const className = req.params.className;
   var search_term = req.body.search;
-
-  res.render('search_results', {classInfo: Info});
+  const info = classType(className);
+  res.render('home', {search_term: search_term, className: className, info: info});
 });
 
-//page 1 route
-app.get('/page1', async function(req, res) {
+//admin route
+app.get('/admin', async function(req, res) {
 
-  res.render('page1' );
+  res.render('admin' );
 });
 
-//page 2 route
-app.get('/search_results', async function(req, res) {
-
-  res.render('search_results' );
-});
-
-app.post('/search_results', async function(req, res) {
-  var search_term = req.body.search;
-
-  res.render('search_results', {search_term: search_term});
-});
 
 function classType(className) {
 
@@ -63,22 +52,9 @@ function classType(className) {
 };
 
 
-const PORT = process.env.PORT || 3000;   
+const PORT = process.env.PORT || 8000;   
 app.listen(PORT, () => {    
   console.log(`Server is running on port ${PORT}.`);   
 });
 
-/*
-app.listen(process.env.PORT, process.env.IP , function()
-{
-   var loopNum = 4; 
-    
-    for(let i = 0 ; i < loopNum ; i++)
-    {
-       console.log("Opening with KEY::ID" + (i*34) + " ACCESS");
-       console.log("Opening with KEY::ID" + (i*346)+ 0 + " accessACCESS");
-    }
-    console.log("Welcome , currently retreiving IP ::::");
-    console.log("Express Server is now Running...");
-});
-**/
+
