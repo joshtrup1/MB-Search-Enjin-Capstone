@@ -12,7 +12,10 @@ app.use(
 )
 
 
-
+//admin route
+app.get('/admin', async function(req, res) {
+  res.render('admin');
+});
 
 //root route
 app.get('/:className', async function(req, res) {
@@ -28,11 +31,6 @@ app.post('/:className', async function(req, res) {
   res.render('home', {search_term: search_term, className: className, info: info});
 });
 
-//admin route
-app.get('/admin', async function(req, res) {
-
-  res.render('admin' );
-});
 
 
 function classType(className) {
