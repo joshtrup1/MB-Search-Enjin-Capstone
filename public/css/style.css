@@ -19,6 +19,12 @@ body {
   border: 1px solid grey;
   cursor: pointer;
   margin-left: 20px;
+  border-radius:10px;
+  font-weight: bold;
+}
+
+#signout_button:hover, #authorize_button:hover {
+  background: #0b7dda;
 }
 
 
@@ -41,25 +47,27 @@ body {
 
 .nav_bar {
   align-content: center;
-  margin: 0 auto;
   /* below is same color as submit button if we want that instead */
   /* background-color:rgb(33, 150, 243); */
-  background-color:rgb(115, 165, 230);
+  background-color:rgb(3, 48, 105);
   opacity: 0.85;
-  width:20%;
-  border-radius:20px;
+  width:10%;
+  border-radius:10px;
   font-size:20px;
-  padding: 20px;
+  padding: 10px;
+  font-weight: bold;
+  display: block;
+  margin-left: auto;
 }
 
 .nav_bar ul {
   text-align: center;
-  color: black;
+  color: white;
   
 }
 
 .nav_bar ul li {
-  color:black;
+  color:white;
   font-size:20px;
   display: inline-block;
   text-align: center;
@@ -68,19 +76,19 @@ body {
 }
 
 .nav_bar a:link {
-  color:black;
+  color:white;
 }
 
 .nav_bar a:visited {
-  color:black;
+  color:white;
 }
 
 .nav_bar a:hover {
-  color:blue;
+  color:black;
 }
 
 .nav_bar .current {
-  background-color: blue
+  background-color: black;
 }
 
 /***** Header ******/ 
@@ -97,10 +105,11 @@ body {
 
 #footer {
   color: white;
+  background-color: black;
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 2.5rem;            /* Footer height */
+  height: 10rem;            /* Footer height */
 }
 
 /***** Search Bar ******/ 
@@ -122,6 +131,7 @@ form.search_bar input[type=text] {
   float: center;
   width: 25%;
   background: #f1f1f1;
+  border-radius:10px;
 }
 
 /* Style the submit button */
@@ -129,18 +139,19 @@ form.search_bar button {
   float: center;
   width: 5%;
   padding: 10px;
-  background: #2196F3;
-  color: white;
+  background: white;
+  color: black;
   font-size: 18px;
   border: 1px solid grey;
-  border-left: none; /* Prevent double borders */
+   /* Prevent double borders */
   cursor: pointer;
+  border-radius:10px;
 }
 
 
 
 form.search_bar button:hover {
-  background: #0b7dda;
+  background: #2196F3;
 }
 
 /* Clear floats */
@@ -160,10 +171,12 @@ form.search_bar::after {
   }
 
 #content{
-align-content: center;
-text-align: center; 
-color: black;
-font-size: 20px
+  align-content: center;
+  text-align: left; 
+  color: black;
+  font-size: 20px;
+  display: block;
+  margin-left: 34%;
 }
 
 #hyperLinks{
