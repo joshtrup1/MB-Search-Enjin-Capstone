@@ -4,7 +4,9 @@
 
 
 <body style='background: url(images/gray.jpg) no-repeat center;' class="text-center">
-  <h1 style="padding-bottom : 5px" class="etc"><%= info[0] %> Course Search </h1>     
+  <h1 style="padding-bottom : 5px" class="etc"> Course Material Search </h1> 
+  <h2 style="padding-bottom : 5px" class="etc">- <%= info[0] %> -</h2> 
+  <h4 style="padding-bottom : 5px" class="etc"><%= info[1] %> </h4>    
 </body>
 
 
@@ -44,10 +46,10 @@
   <div id=displayLoginEmail></div>
   
   
-    <button id="signout_button" href="#" onclick="signOut();">Sign out</a>
+  <button id="signout_button" href="#" onclick="signOut();">Sign out</a>
 
   <!--Add buttons to initiate auth sequence and sign out-->
-    <button id="authorize_button">Sign in</button>
+  <button id="authorize_button">Sign in</button>
     
 
   <!--File Results displayed here-->
@@ -63,7 +65,7 @@
 
 </body>
 <%- include ("partials/footer.ejs") %>
-</body>
+
 
 
 
