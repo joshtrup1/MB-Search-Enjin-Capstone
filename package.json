@@ -22,6 +22,9 @@
     "express": "^4.17.1",
     "googleapis": "^73.0.0",
     "node": "^16.1.0",
-    "nodemon": "^2.0.7"
+    "nodemon": "^2.0.7",
+    "ffmpeg": "0.0.4",
+    "node-cron": "^3.0.0",
+    "tesseract.js": "^2.1.4"
   }
 }
