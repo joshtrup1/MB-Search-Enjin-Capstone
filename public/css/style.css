@@ -41,8 +41,6 @@ body {
 
 .nav_bar {
   align-content: center;
-  /* below is same color as submit button if we want that instead */
-  /* background-color:rgb(33, 150, 243); */
   background-color:#2196F3;
   width:10%;
   border-radius:10px;
@@ -182,8 +180,12 @@ form.search_bar::after {
   font-size: 15px
   }
 
-  a[target=_blank] {
-    background-color: yellow;
-  }
+  /* Clear floats */
+form.search_bar::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
 
  
