@@ -81,6 +81,7 @@ app.post('/video', function(req, res) {
 app.get('/:className', async function(req, res) {
   const className = req.params.className;
   const info = classType(className);
+  console.log("this one ", req.params)
   res.render('home', {className: className, info: info, search_term: undefined});
 });
 
@@ -88,7 +89,7 @@ app.post('/:className', async function(req, res) {
   const className = req.params.className;
   var search_term = req.body.search;
   const info = classType(className);
- 
+
   res.render('home', {search_term: search_term, className: className, info: info});
 });
 

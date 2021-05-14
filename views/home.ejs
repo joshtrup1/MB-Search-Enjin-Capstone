@@ -224,6 +224,25 @@ function signOut() {
           
           pre.append(iconImg);
           pre.append(linkUrl); 
+        }
+      
+      } else {
+        appendPre('No files found.');
+      }
+    });
+
+    // for video search
+    gapi.client.drive.files.list({
+      q: "parents in '"+searchInFileID+"'",
+      'pageSize': 10,
+      'fields': "nextPageToken, files(id, name, iconLink)" 
+    }).then(function(response) {
+      appendPre('');
+      files = response.result.files;
+      if (files && files.length > 0) {
+        for (var i = 0; i < files.length; i++) {
+          var file = files[i];
+          var fileName = file.name; 
 
           if(fileName.includes("mp4")){
             items.push(
