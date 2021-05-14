@@ -19,7 +19,7 @@ var video_script = require('./videoScript')
 var cron = require('node-cron');
 // video_script.start();
 cron.schedule('0 0 2 * * *', () =>{
-    video_script.start()
+    // video_script.start()
     console.log('running at 2am')
 })
 
