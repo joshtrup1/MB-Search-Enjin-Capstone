@@ -8,6 +8,7 @@
 </body>
 
 
+
 <html>
 <head>
 
@@ -16,8 +17,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
     <!-- JS, Popper.js, and jQuery -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script> -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
@@ -56,13 +58,10 @@
   <% } %>
   <a id="content">  </a> 
 
-  <% if (videoResults != null) { %>
-    <div class="videos">
-      <%= videoResults["proof"].timestamp %> 
-      <%= videoResults["this"].timestamp %> 
-    </div>
-  <% } %>
-  
+
+  <div class="videos">
+
+  </div>
 
 </body>
 <%- include ("partials/footer.ejs") %>
@@ -202,6 +201,7 @@ function signOut() {
    * Print files.
    */
   function listFiles() {
+    let items = []
     const t = document.getElementById('p1');
     const searchInFileID = '1ZtGODBQ9XVYusZNiwMc9v1j9veKglTMY';
     gapi.client.drive.files.list({
@@ -224,7 +224,44 @@ function signOut() {
           
           pre.append(iconImg);
           pre.append(linkUrl); 
+
+          if(fileName.includes("mp4")){
+            items.push(
+              {
+              video: fileName.slice(0,-4),
+              id: file.id
+            })
           }
+        }
+        let mp4icon = createImg("https://drive-thirdparty.googleusercontent.com/16/type/video/mp4")
+
+        let terms = search_term.split();
+        $.ajax({
+          url : `${window.location.origin}/video`,
+          type : 'POST',
+          data : {
+            videolist:items,
+            terms: search_term
+          },
+          dataType:'json',
+          success : function(data) {   
+            let d = data.jsonResult
+            console.log(d)
+              //loop through the returned json with the search 
+              for(let t in terms){
+                // loop through the timestamps
+                for(let seconds in d[terms[t]].timestamp){
+                  let s = d[terms[t]].timestamp[seconds]
+                  
+                  $(".videos").append(
+                      
+                  `<a href="https://drive.google.com/file/d/${data.fileID}?t=${s}s<br>">${d[terms[t]].fileName}.mp4 @ ${s}</a><br>`)
+                }
+              }
+              
+          },
+          error : function(request,error){}
+        });
       } else {
         appendPre('No files found.');
       }

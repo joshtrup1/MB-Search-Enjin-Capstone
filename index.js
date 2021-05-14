@@ -23,32 +23,29 @@ cron.schedule('0 0 2 * * *', () =>{
     console.log('running at 2am')
 })
 
-function videoSearch(search_term){
-  let videos = ['proof-by-contradiction', 'implication']
+function videoSearch(search_term, videos){
+  // let videos = ['proof-by-contradiction', 'implication']
+
   let terms = search_term.split(" ")
   let count = [];
-  // console.log(terms)
-  for(v in videos){
-    vid = videos[v]
-    // console.log(vid)
+  for(let v in videos){
+    let vid = videos[v].video;
+    // if the video is in the completed list of parsed videos 
     if(completed[`${vid}.mp4`]){
       let currentJSON = fs.readFileSync(`./public/js/${vid}.json`);
       let current = JSON.parse(currentJSON)
-      
       for(t in terms){
         let term = terms[t]
-        // console.log(term)
         if(current[term] && count[v]){
-          // count[vid].occurences += current[term].occurences
           count[v].occurences += current[term].occurences
         }
         else if(current[term]){
-          // count[vid] = {occurences: current[term].occurences}
-          count[v] = {video:vid, occurences: current[term].occurences}
+          count[v] = {video:vid, occurences: current[term].occurences, id:videos[v].id}
         }
       }
     }  
   }
+  // sort list
   count.sort((a,b) =>(a.occurences > b.occurences) ? 1: -1)
   return count
 }
@@ -56,6 +53,28 @@ function videoSearch(search_term){
 //admin route
 app.get('/admin', async function(req, res) {
   res.render('admin');
+});
+
+app.post('/video', function(req, res) {
+  let search_term = req.body.terms;
+  let videos = req.body.videolist;
+  // console.log(videos)
+
+  let result = videoSearch(search_term, videos)
+  let jsonResult = "";
+  let temp = "";
+  let fileID = "";
+  if(result.length == 0){
+    jsonResult = null;
+    fileID = null;
+  }
+  else if (result){
+    temp = fs.readFileSync(`./public/js/${result[result.length-1].video}.json`);
+    jsonResult = JSON.parse(temp)
+    fileID = result[result.length-1].id
+  }
+  
+  res.send({jsonResult:jsonResult, fileID:fileID});
 });
 
 //root route
@@ -69,20 +88,8 @@ app.post('/:className', async function(req, res) {
   const className = req.params.className;
   var search_term = req.body.search;
   const info = classType(className);
-
-  let result = videoSearch(search_term)
-  console.log(result)
-  let jsonResult = "";
-  let temp = "";
-  if(result.length == 0){
-    jsonResult = null
-  }
-  else if (result){
-    temp = fs.readFileSync(`./public/js/${result[result.length-1].video}.json`);
-    jsonResult = JSON.parse(temp)
-  }
  
-  res.render('home', {search_term: search_term, className: className, info: info, videoResults:jsonResult});
+  res.render('home', {search_term: search_term, className: className, info: info});
 });
 
 
