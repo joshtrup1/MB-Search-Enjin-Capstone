@@ -36,12 +36,6 @@ body {
 }
 
 
-#displayLoginLogo{
-  align-content: left;
-  text-align: left;
-  color:blue;
-}
-
 
 /***** Nav Bar ******/
 
@@ -49,8 +43,7 @@ body {
   align-content: center;
   /* below is same color as submit button if we want that instead */
   /* background-color:rgb(33, 150, 243); */
-  background-color:rgb(3, 48, 105);
-  opacity: 0.85;
+  background-color:#2196F3;
   width:10%;
   border-radius:10px;
   font-size:20px;
@@ -92,6 +85,9 @@ body {
 }
 
 /***** Header ******/ 
+
+
+
 
 /***** Footer ******/ 
 #page-container {
@@ -161,7 +157,7 @@ form.search_bar::after {
   display: table;
 }
 
-/***** Search Restults Page ******/ 
+/***** Search Restults ******/ 
 
 #p1{
   align-content:center ;
