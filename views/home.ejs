@@ -58,11 +58,13 @@
   <% } %>
   <a id="content">  </a> 
 
+  <% if (videoResults != null) { %>
+    <div class="videos">
+      <%= videoResults["proof"].timestamp %> 
+      <%= videoResults["this"].timestamp %> 
+    </div>
+  <% } %>
   
-  <div class="videos">
-    <%= videoResults["proof"].timestamp %> 
-    <%= videoResults["this"].timestamp %> 
-  </div>
 
 </body>
 <%- include ("partials/footer.ejs") %>
