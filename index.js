@@ -71,8 +71,17 @@ app.post('/:className', async function(req, res) {
   const info = classType(className);
 
   let result = videoSearch(search_term)
-  let temp = fs.readFileSync(`./public/js/${result[result.length-1].video}.json`);
-  let jsonResult = JSON.parse(temp)
+  console.log(result)
+  let jsonResult = "";
+  let temp = "";
+  if(result.length == 0){
+    jsonResult = null
+  }
+  else if (result){
+    temp = fs.readFileSync(`./public/js/${result[result.length-1].video}.json`);
+    jsonResult = JSON.parse(temp)
+  }
+ 
   res.render('home', {search_term: search_term, className: className, info: info, videoResults:jsonResult});
 });
 
