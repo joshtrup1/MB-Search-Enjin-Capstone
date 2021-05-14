@@ -4,9 +4,7 @@
 
 
 <body style='background: url(images/gray.jpg) no-repeat center;' class="text-center">
-  <h1 style="padding-bottom : 5px" class="etc"> Course Material Search </h1> 
-  <h2 style="padding-bottom : 5px" class="etc">- <%= info[0] %> -</h2> 
-  <h4 style="padding-bottom : 5px" class="etc"><%= info[1] %> </h4>    
+  <h1 style="padding-bottom : 5px" class="etc"><%= info[0] %> Course Search </h1>     
 </body>
 
 
@@ -44,12 +42,12 @@
   
  
   <div id=displayLoginEmail></div>
+  <!-- <div id=displayLoginLogo></div> -->
   
-  
-  <button id="signout_button" href="#" onclick="signOut();">Sign out</a>
+    <button id="signout_button" href="#" onclick="signOut();">Sign out</a>
 
   <!--Add buttons to initiate auth sequence and sign out-->
-  <button id="authorize_button">Sign in</button>
+    <button id="authorize_button">Sign in</button>
     
 
   <!--File Results displayed here-->
@@ -60,7 +58,7 @@
 
 </body>
 <%- include ("partials/footer.ejs") %>
-
+</body>
 
 
 
@@ -149,13 +147,16 @@ function signOut() {
       showEmail(email)
       showErrorMessage("")
       allowFormSubmit(false)
-      listFiles();
+      if(search_term) {
+        listFiles();
+      }
     } else {
       authorizeButton.style.display = 'block';
       signoutButton.style.display = 'none';
-      showErrorMessage("Log in with Google account to unlock search")
+      showErrorMessage("Log in to Csumb email to search")
       allowFormSubmit(true)
       showEmail("")
+      clearList()
     }
   }
 
@@ -163,6 +164,7 @@ function signOut() {
    *  Sign in the user upon button click.
    */
   function handleAuthClick(event) {
+    search_term = ""
     gapi.auth2.getAuthInstance().signIn();
   }
 
@@ -193,10 +195,9 @@ function signOut() {
    */
   function listFiles() {
     const t = document.getElementById('p1');
-    const terms = t.getAttribute('value');
     const searchInFileID = '1ZtGODBQ9XVYusZNiwMc9v1j9veKglTMY';
     gapi.client.drive.files.list({
-      q: "fullText Contains '"+terms+"' and parents in '"+searchInFileID+"'",
+      q: "fullText Contains '"+search_term+"' and parents in '"+searchInFileID+"'",
       'pageSize': 10,
       'fields': "nextPageToken, files(id, name, iconLink)" 
     }).then(function(response) {
@@ -214,16 +215,17 @@ function signOut() {
           const pre = document.querySelector('#content');
           
           pre.append(iconImg);
-          pre.append(linkUrl);
-          
-      
-          
-          
+          pre.append(linkUrl); 
           }
       } else {
         appendPre('No files found.');
       }
     });
+  }
+
+  function clearList() {
+    const content = document.querySelector('#content');      
+    content.innerHTML = ""
   }
 
 
@@ -232,14 +234,14 @@ function signOut() {
     //  need to add page number ex: #page=10
     const aTag = document.createElement('a');
     const url = `https://drive.google.com/file/d/${id}/view?usp=sharing"`;
-    
+    //const url = `https://drive.google.com/uc?export=view&id=${id}`;
 
     aTag.className = "contentLinks";
     aTag.style = "white-space: pre-wrap;";
 
     //changes link to filename instead of actual URL
     aTag.textContent = fileName;
-    
+    aTag.target = "_blank"
     aTag.href = url;
     aTag.append("\n\n");
     
@@ -254,14 +256,15 @@ function signOut() {
     return imgTag;
     }
 
-function changeBackground(color) {
-document.body.style.backgroundImage = color;
-}
-function refresh() {    
-  setTimeout(function () {
-      location.reload()
-  }, 100);
-}
+  function changeBackground(color) {
+    document.body.style.backgroundImage = color;
+  }
+
+  function refresh() {    
+    setTimeout(function () {
+        location.reload()
+    }, 100);
+  }
 
 </script>
 
