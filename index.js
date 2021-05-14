@@ -32,6 +32,7 @@ function videoSearch(search_term, videos){
     let vid = videos[v].video;
     // if the video is in the completed list of parsed videos 
     if(completed[`${vid}.mp4`]){
+      // get current video json
       let currentJSON = fs.readFileSync(`./public/js/${vid}.json`);
       let current = JSON.parse(currentJSON)
       for(t in terms){
@@ -55,10 +56,10 @@ app.get('/admin', async function(req, res) {
   res.render('admin');
 });
 
+// route used for video search
 app.post('/video', function(req, res) {
   let search_term = req.body.terms;
   let videos = req.body.videolist;
-  // console.log(videos)
 
   let result = videoSearch(search_term, videos)
   let jsonResult = "";

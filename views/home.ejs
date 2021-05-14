@@ -201,7 +201,6 @@ function signOut() {
    * Print files.
    */
   function listFiles() {
-    let items = []
     const t = document.getElementById('p1');
     const searchInFileID = '1ZtGODBQ9XVYusZNiwMc9v1j9veKglTMY';
     gapi.client.drive.files.list({
@@ -232,6 +231,7 @@ function signOut() {
     });
 
     // for video search
+    let items = []
     gapi.client.drive.files.list({
       q: "parents in '"+searchInFileID+"'",
       'pageSize': 10,
@@ -254,7 +254,7 @@ function signOut() {
         }
         let mp4icon = createImg("https://drive-thirdparty.googleusercontent.com/16/type/video/mp4")
 
-        let terms = search_term.split();
+        let terms = search_term.split(" ");
         $.ajax({
           url : `${window.location.origin}/video`,
           type : 'POST',
@@ -265,9 +265,9 @@ function signOut() {
           dataType:'json',
           success : function(data) {   
             let d = data.jsonResult
-            console.log(d)
               //loop through the returned json with the search 
               for(let t in terms){
+                console.log(terms)
                 // loop through the timestamps
                 for(let seconds in d[terms[t]].timestamp){
                   let s = d[terms[t]].timestamp[seconds]
