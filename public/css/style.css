@@ -174,6 +174,16 @@ form.search_bar::after {
   margin-left: 34%;
 }
 
+.videos{
+  align-content: center;
+  text-align: left; 
+  color: black;
+  font-size: 20px;
+  display: block;
+  margin-left: 34%;
+  
+}
+
 #hyperLinks{
   align-content: left;
   text-align: left;
