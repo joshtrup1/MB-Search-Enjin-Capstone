@@ -3,7 +3,8 @@
 body {
 	align-content:  center; 
   background-size: cover;
-  position: center; 
+  background-position: center; 
+  background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-position: 50% 50%;
 }
