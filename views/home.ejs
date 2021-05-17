@@ -261,19 +261,21 @@ function signOut() {
           dataType:'json',
           success : function(data) {   
             let d = data.jsonResult
+            if(d != null){
               //loop through the returned json with the search 
               for(let t in terms){
-                console.log(terms)
-                // loop through the timestamps
-                for(let seconds in d[terms[t]].timestamp){
-                  let s = d[terms[t]].timestamp[seconds]
+                if(d[terms[t]]){
+                  // loop through the timestamps
+                  for(let seconds in d[terms[t]].timestamp){
+                    let s = d[terms[t]].timestamp[seconds]
                   
-                  $(".videos").append(
+                    $(".videos").append(
                       
-                  `<a href="https://drive.google.com/file/d/${data.fileID}?t=${s}s<br>" target="_blank">${d[terms[t]].fileName}.mp4 @ ${s}</a><br>`)
+                    `<a href="https://drive.google.com/file/d/${data.fileID}?t=${s}s<br>" target="_blank">${d[terms[t]].fileName}.mp4 @ ${s}</a><br>`)
+                  }
                 }
               }
-              
+            }
           },
           error : function(request,error){}
         });

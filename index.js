@@ -14,7 +14,7 @@ app.use(
   })
 )
 
-// script for parsing video
+// script for parsing video only use this if ffmpeg is downloaded and in environment variables
 var video_script = require('./videoScript')
 var cron = require('node-cron');
 // video_script.start();
@@ -24,8 +24,6 @@ cron.schedule('0 0 2 * * *', () =>{
 })
 
 function videoSearch(search_term, videos){
-  // let videos = ['proof-by-contradiction', 'implication']
-
   let terms = search_term.split(" ")
   let count = [];
   for(let v in videos){
@@ -48,6 +46,9 @@ function videoSearch(search_term, videos){
   }
   // sort list
   count.sort((a,b) =>(a.occurences > b.occurences) ? 1: -1)
+  if(count[-1] == undefined){
+    count.pop(-1)
+  }
   return count
 }
 
@@ -82,7 +83,6 @@ app.post('/video', function(req, res) {
 app.get('/:className', async function(req, res) {
   const className = req.params.className;
   const info = classType(className);
-  console.log("this one ", req.params)
   res.render('home', {className: className, info: info, search_term: undefined});
 });
 
