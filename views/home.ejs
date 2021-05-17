@@ -171,7 +171,7 @@ function signOut() {
   }
 
   /**
-   *  Sign out the user upon button click.
+   *  Sign out the user upon button click. 
    */
   function handleSignoutClick(event) {
     gapi.auth2.getAuthInstance().signOut();
@@ -270,7 +270,7 @@ function signOut() {
                   
                     $(".videos").append(
                       
-                    `<a href="https://drive.google.com/file/d/${data.fileID}?t=${s}s<br>" target="_blank">${d[terms[t]].fileName}.mp4 @ ${s}</a><br>`)
+                    `<a href="https://drive.google.com/file/d/${data.fileID}?t=${s}s" target="_blank">${d[terms[t]].fileName}.mp4 @ ${s}</a><br>`)
                   }
                 }
               }
