@@ -14,7 +14,7 @@ app.use(
   })
 )
 
-// script for parsing video
+// script for parsing video only use this if ffmpeg is downloaded and in environment variables
 var video_script = require('./videoScript')
 var cron = require('node-cron');
 // video_script.start();
@@ -24,14 +24,13 @@ cron.schedule('0 0 2 * * *', () =>{
 })
 
 function videoSearch(search_term, videos){
-  // let videos = ['proof-by-contradiction', 'implication']
-
   let terms = search_term.split(" ")
   let count = [];
   for(let v in videos){
     let vid = videos[v].video;
     // if the video is in the completed list of parsed videos 
     if(completed[`${vid}.mp4`]){
+      // get current video json
       let currentJSON = fs.readFileSync(`./public/js/${vid}.json`);
       let current = JSON.parse(currentJSON)
       for(t in terms){
@@ -47,6 +46,9 @@ function videoSearch(search_term, videos){
   }
   // sort list
   count.sort((a,b) =>(a.occurences > b.occurences) ? 1: -1)
+  if(count[-1] == undefined){
+    count.pop(-1)
+  }
   return count
 }
 
@@ -55,10 +57,10 @@ app.get('/admin', async function(req, res) {
   res.render('admin');
 });
 
+// route used for video search
 app.post('/video', function(req, res) {
   let search_term = req.body.terms;
   let videos = req.body.videolist;
-  // console.log(videos)
 
   let result = videoSearch(search_term, videos)
   let jsonResult = "";
@@ -81,7 +83,6 @@ app.post('/video', function(req, res) {
 app.get('/:className', async function(req, res) {
   const className = req.params.className;
   const info = classType(className);
-  console.log("this one ", req.params)
   res.render('home', {className: className, info: info, search_term: undefined});
 });
 
