@@ -3,7 +3,8 @@
 body {
 	align-content:  center; 
   background-size: cover;
-  position: center; 
+  background-position: center; 
+  background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-position: 50% 50%;
 }
@@ -15,12 +16,13 @@ body {
   display: none;
   background: #2196F3;
   color: white;
-  font-size: 18px;
+  font-size: 20px;
   border: 1px solid grey;
   cursor: pointer;
-  margin-left: 20px;
   border-radius:10px;
   font-weight: bold;
+  justify-content: right;
+  width:8%;
 }
 
 #signout_button:hover, #authorize_button:hover {
@@ -30,9 +32,14 @@ body {
 
 #displayLoginEmail{
   padding-left: 10px;
-  align-content: left;
-  text-align: left;
+  align-content: right;
+  text-align: right;
   color:black;
+}
+
+.flex-container{
+  display: flex;
+  justify-content: right;
 }
 
 
@@ -42,13 +49,13 @@ body {
 .nav_bar {
   align-content: center;
   background-color:#2196F3;
-  width:10%;
+  width:8%;
   border-radius:10px;
   font-size:20px;
   padding: 10px;
   font-weight: bold;
   display: block;
-  margin-left: auto;
+  justify-content: right;
 }
 
 .nav_bar ul {
