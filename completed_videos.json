@@ -1,8 +1,1 @@
-{
-    "implication.mp4": {
-        "date_parsed": "5/2/2021"
-    },
-    "proof-by-contradiction.mp4": {
-        "date_parsed": "2021-05-07T18:30:18.645Z"
-    }
-}
+{"implication.mp4":{"date_parsed":"5/2/2021"},"proof-by-contradiction.mp4":{"date_parsed":"2021-05-07T18:30:18.645Z"},"disjunction-card-games.mp4":{"date_parsed":"2021-05-17T03:04:17.669Z"},"disjunction-inference.mp4":{"date_parsed":"2021-05-17T03:05:01.179Z"},"disjunction-semantics.mp4":{"date_parsed":"2021-05-17T03:05:02.405Z"}}
